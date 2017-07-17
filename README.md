@@ -11,9 +11,10 @@ Allow the user to tap on a movie poster and transition to a details screen with 
 original title,
 movie poster,
 image thumbnail,
-A plot synopsis,
-user rating, 
-release date
+a plot synopsis,
+user rating,
+and
+release date.
 
 To use this app you will need to use your themoviesdb.org API key in Constants.java with this variable:
 API_KEY
