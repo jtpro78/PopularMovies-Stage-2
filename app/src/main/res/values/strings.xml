@@ -1,0 +1,9 @@
+<resources>
+    <string name="title_activity_movie_details">MovieDetails</string>
+    <string name="app_name">Popular Movies</string>
+    <string name="Release_Date">Release Date</string>
+    <string name="Movie_Rating">Movie Rating</string>
+    <string name="Most_Popular">Most Popular</string>
+    <string name="Top_Rated">Top Rated</string>
+    <string name="Vote_Count">/10 Stars</string>
+</resources>
