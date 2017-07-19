@@ -1,87 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="jason.tuchler.com.popularmovies.MovieDetails">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:background="#4a4a4a"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
+
     <RelativeLayout
         android:padding="16dp"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/title_container"
-            android:layout_marginBottom="16dp"
-            android:background="@color/colorMovieTitle"
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-            <TextView
-                android:id="@+id/movie_detail_title"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="16dp"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RelativeLayout>
-
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
-            android:id="@+id/movie_poster"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:layout_below="@id/title_container"
             android:layout_width="match_parent"
-            android:layout_height="180dp">
-            <ImageView
-                android:id="@+id/movie_detail_poster"
-                android:layout_weight="0.4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
-            <LinearLayout
-                android:padding="8dp"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp"
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/title_container"
+                android:layout_marginBottom="16dp"
+                android:background="@color/colorMovieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
                 <TextView
-                    android:text="@string/Release_Date"
-                    android:textSize="20sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/release_date"
-                    android:textSize="20sp"
-                    android:paddingBottom="20dp"
+                    android:id="@+id/movie_detail_title"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="16dp"
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="@string/Movie_Rating"
-                    android:textSize="20sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/movie_rating"
-                    android:textSize="20sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/movie_poster"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_below="@id/title_container"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+                <ImageView
+                    android:id="@+id/movie_detail_poster"
+                    android:contentDescription="movie_poster"
+                    android:layout_weight="0.4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:padding="8dp"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="@string/Release_Date"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/release_date"
+                        android:textSize="20sp"
+                        android:paddingBottom="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="@string/Movie_Rating"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/movie_rating"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/movie_description"
-            android:textSize="18sp"
-            android:layout_below="@id/movie_poster"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
 
+            <TextView
+                android:id="@+id/movie_description"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+    </RelativeLayout>
 </RelativeLayout>
+
