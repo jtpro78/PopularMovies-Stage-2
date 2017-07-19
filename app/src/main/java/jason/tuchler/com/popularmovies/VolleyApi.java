@@ -61,7 +61,7 @@ public class VolleyApi {
 
                         if (movieObject.has("release_date")) {
                             String release_date = movieObject.getString("release_date");
-                            movie.setRelease_date(release_date);
+                            movie.setReleaseDate(release_date);
                             Log.d("RELEASE_DATE ", String.valueOf(release_date));
                         }
 
