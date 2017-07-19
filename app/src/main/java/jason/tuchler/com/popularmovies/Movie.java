@@ -45,12 +45,12 @@ public class Movie implements Serializable {
         this.overview = overview;
     }
 
-    public String getRelease_date() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.releaseDate = release_date;
+    public void setReleaseDate(String releasedate) {
+        this.releaseDate = releasedate;
     }
 
     @Override
