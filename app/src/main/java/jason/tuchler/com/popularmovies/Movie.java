@@ -9,7 +9,7 @@ public class Movie implements Serializable {
     String title;
     String imagePath;
     String overview;
-    String release_date;
+    String releaseDate;
     String voteCount;
 
 
@@ -46,11 +46,11 @@ public class Movie implements Serializable {
     }
 
     public String getRelease_date() {
-        return release_date;
+        return releaseDate;
     }
 
     public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+        this.releaseDate = release_date;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Movie implements Serializable {
                 ", imagePath='" + imagePath + '\'' +
                 ", voteCount='" + voteCount + '\'' +
                 ", overview='" + overview + '\'' +
-                ", release_date='" + release_date +
+                ", release_date='" + releaseDate +
                 '}';
     }
 }
