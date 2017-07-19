@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     MoviesAdapter adapter;
-    String apiUrlPopular = "http://api.themoviedb.org/3/movie/popular?" + Constants.API_KEY;
-    String apiUrlTopRated = "http://api.themoviedb.org/3/movie/top_rated?" + Constants.API_KEY;
+    String apiUrlPopular = "http://api.themoviedb.org/3/movie/popular?api_key=" + Constants.API_KEY;
+    String apiUrlTopRated = "http://api.themoviedb.org/3/movie/top_rated?api_key=" + Constants.API_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = ( RecyclerView ) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns()));
 
         volleyApi = VolleyApi.getInstance();
         volleyApi.getAllMovies(this, apiUrlPopular, new VolleyApi.MovieResultListener() {
@@ -51,7 +53,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
+    private int numberOfColumns() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        // You can change this divider to adjust the size of the poster
+        int widthDivider = 400;
+        int width = displayMetrics.widthPixels;
+        int nColumns = width / widthDivider;
+        if (nColumns < 2) return 2;
+        return nColumns;
+    }
+
+        class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
         private List<Movie> movies;
 
         MoviesAdapter(List<Movie> movies) {
@@ -88,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             public void bindTo(Movie movie) {
                 Log.d("IMAGE_PATH: ", movie.getImagePath());
                 this.movie = movie;
-                Picasso.with(movieImage.getContext()).load(movie.imagePath).into(movieImage);
+                Picasso.with(movieImage.getContext()).load(movie.imagePath).placeholder(R.drawable.loading).error(R.drawable.error).into(movieImage);
             }
 
             @Override
@@ -149,5 +162,6 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    }
+}
+
 
