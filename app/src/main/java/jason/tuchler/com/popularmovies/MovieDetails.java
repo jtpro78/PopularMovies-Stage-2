@@ -60,7 +60,7 @@ public class MovieDetails extends AppCompatActivity {
         Picasso.with(this).load(movie.imagePath).into(poster);
         movieTitle.setText(movie.getTitle());
         overView.setText(movie.getOverview());
-        releaseDate.setText(movie.getRelease_date());
+        releaseDate.setText(movie.getReleaseDate());
         movieRating.setText(movie.getVoteCount() + Count);
 
     }
