@@ -11,7 +11,19 @@ public class Movie implements Serializable {
     String overview;
     String releaseDate;
     String voteCount;
+    String movieVideo;
+    String isFavorite;
 
+    int movieId;
+
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
 
     public String getTitle() {
         return title;
@@ -53,6 +65,18 @@ public class Movie implements Serializable {
         this.releaseDate = releasedate;
     }
 
+    public String getMovieVideo() {
+        return movieVideo;
+    }
+
+    public void setMovieVideo(String movieVideo) {
+        this.movieVideo = movieVideo;
+    }
+
+    public void setFavorite(String favorite) {
+        this.isFavorite = favorite;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -61,7 +85,8 @@ public class Movie implements Serializable {
                 ", imagePath='" + imagePath + '\'' +
                 ", voteCount='" + voteCount + '\'' +
                 ", overview='" + overview + '\'' +
-                ", release_date='" + releaseDate +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", movieVideo='" + movieVideo + '\'' +
                 '}';
     }
 }

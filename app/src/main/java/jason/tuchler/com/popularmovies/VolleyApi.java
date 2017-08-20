@@ -60,9 +60,21 @@ public class VolleyApi {
                         }
 
                         if (movieObject.has("release_date")) {
-                            String release_date = movieObject.getString("release_date");
-                            movie.setReleaseDate(release_date);
-                            Log.d("RELEASE_DATE ", String.valueOf(release_date));
+                            String releaseDate = movieObject.getString("release_date");
+                            movie.setReleaseDate(releaseDate);
+                            Log.d("RELEASE_DATE ", String.valueOf(releaseDate));
+                        }
+
+                        if (movieObject.has("id")) {
+                            int movieId = movieObject.getInt("id");
+                            movie.setMovieId(movieId);
+                            Log.d("ID ", String.valueOf(movieId));
+                        }
+
+                        if (movieObject.has("key")) {
+                            String movieVideo = movieObject.getString("key");
+                            movie.setMovieVideo(movieVideo);
+                            Log.d("VIDEOS", String.valueOf(movieVideo));
                         }
 
                         movies.add(movie);

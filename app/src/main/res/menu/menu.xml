@@ -6,6 +6,8 @@
         android:checked="true" />
   <item android:id="@+id/sort_by_top_rated"
         android:title="@string/Top_Rated"/>
+  <item android:id="@+id/favorite"
+        android:title="@string/Favorites"/>
  </group>
 </menu>
 

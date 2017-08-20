@@ -7,11 +7,11 @@
 
     <application
         android:allowBackup="true"
+        android:background="@color/colorPrimaryDark"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:background="@color/colorPrimaryDark"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,6 +24,10 @@
             android:name=".MovieDetails"
             android:label="@string/title_activity_movie_details"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".TrailerHolder">
+        </activity>
+        <activity android:name=".WebBrowser">
         </activity>
     </application>
 

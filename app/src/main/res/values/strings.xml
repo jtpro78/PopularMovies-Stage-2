@@ -6,4 +6,11 @@
     <string name="Most_Popular">Most Popular</string>
     <string name="Top_Rated">Top Rated</string>
     <string name="Vote_Count">/10 Stars</string>
+    <string name="Movie_Poster">movie_poster</string>
+    <string name="Trailers">Trailers</string>
+    <string name="Reviews">Reviews</string>
+    <string name="Review">Review</string>
+    <string name="TextView">TextView</string>
+    <string name="Trailer_Name">Trailer Name</string>
+    <string name="Favorites">Favorites</string>
 </resources>
