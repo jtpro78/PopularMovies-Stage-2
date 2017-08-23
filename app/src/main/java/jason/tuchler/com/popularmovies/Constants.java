@@ -4,7 +4,7 @@ public class Constants {
     public static final String IMAGE_URL_PREFIX = "http://image.tmdb.org/t/p/";
     public static final String CURRENT_MOVIE = "jason.tuchler.com.CURRENT_MOVIE";
     public static final String MOVIE_SIZE = "w185";
-    public static final String API_KEY="e54b52b33ce13626cf87ca053b7aa19a"; // Enter themoviedb.org API key here.
+    public static final String API_KEY=""; // Enter themoviedb.org API key here.
     public static final String MOVIE_URL_PREFIX = "https://api.themoviedb.org/3/movie/";
     public static final String API_URL_POPULAR = "http://api.themoviedb.org/3/movie/popular?api_key=" + API_KEY;
     public static final String API_URL_TOP_RATED = "http://api.themoviedb.org/3/movie/top_rated?api_key=" + API_KEY;
