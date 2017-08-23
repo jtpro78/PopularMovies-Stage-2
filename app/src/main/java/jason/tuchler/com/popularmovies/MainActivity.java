@@ -1,10 +1,8 @@
 package jason.tuchler.com.popularmovies;
 
-
-
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -29,14 +27,12 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     MoviesAdapter adapter;
-    String apiUrlPopular = "http://api.themoviedb.org/3/movie/popular?api_key=" + Constants.API_KEY;
-    String apiUrlTopRated = "http://api.themoviedb.org/3/movie/top_rated?api_key=" + Constants.API_KEY;
-    String apiUrlVideo = "https://api.themoviedb.org/3/movie/119450/videos?api_key=" + Constants.API_KEY + "&language=en-US";
 
-    MovieDetails.MovieDatabaseContract.FavoriteMovieDBHelper mDbHelper = new MovieDetails.MovieDatabaseContract.FavoriteMovieDBHelper(this);
     ArrayList<Movie> arrFavoriteMovies= new ArrayList<Movie>();
     ArrayList<Movie> arrMostPopular= new ArrayList<Movie>();
     ArrayList<Movie> arrTopRated= new ArrayList<Movie>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         getFromDB();
 
         volleyApi = VolleyApi.getInstance();
-        volleyApi.getAllMovies(this, apiUrlPopular, new VolleyApi.MovieResultListener() {
+        volleyApi.getAllMovies(this, Constants.API_URL_POPULAR, new VolleyApi.MovieResultListener() {
 
 
             @Override
@@ -78,6 +74,79 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("title", (String) getTitle());
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        String title = String.valueOf(savedInstanceState.get("title"));
+
+        if(title.equals("Popular Movies")){
+            getFromDB();
+            volleyApi = VolleyApi.getInstance();
+            volleyApi.getAllMovies(this, Constants.API_URL_POPULAR, new VolleyApi.MovieResultListener() {
+
+                @Override
+                public void onMoviesResult(List<Movie> result) {
+                    arrMostPopular = new ArrayList<Movie>();
+
+                    for (Movie movie : result) {
+
+                        // check if the movie is favorite or not, if favorite then 1 else 0
+                        for(Movie movie1 : arrFavoriteMovies){
+                            if(movie1.title.equals(movie.title))  {
+                                movie.isFavorite = "1";
+                            }
+                        }
+                        arrMostPopular.add(movie);
+                    }
+                    adapter = new MoviesAdapter(arrMostPopular);
+                    recyclerView.setAdapter(adapter);
+                }
+            });
+        }
+
+        else if(title.equals("Top Rated Movies")){
+            getFromDB();
+            volleyApi = VolleyApi.getInstance();
+            volleyApi.getAllMovies(this, Constants.API_URL_TOP_RATED, new VolleyApi.MovieResultListener() {
+
+                @Override
+                public void onMoviesResult(List<Movie> result) {
+
+                    arrTopRated = new ArrayList<Movie>();
+
+                    for (Movie movie : result) {
+
+                        // check if the movie is favorite or not, if favorite then 1 else 0
+                        for(Movie movie1 : arrFavoriteMovies){
+                            if(movie1.title.equals(movie.title))  {
+                                movie.isFavorite = "1";
+                            }
+                        }
+                        arrTopRated.add(movie);
+
+                    }
+                    adapter = new MoviesAdapter(arrTopRated);
+                    recyclerView.setAdapter(adapter);
+                }
+            });
+        }
+
+        else if(title.equals("Favorite Movies")){
+            getFromDB();
+            adapter = new MoviesAdapter(arrFavoriteMovies);
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
+    @Override
     public void onRestart() {
         super.onRestart();
 // if view comes again update the values
@@ -85,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         if(getTitle().equals("Popular Movies")){
             getFromDB();
             volleyApi = VolleyApi.getInstance();
-            volleyApi.getAllMovies(this, apiUrlPopular, new VolleyApi.MovieResultListener() {
+            volleyApi.getAllMovies(this, Constants.API_URL_POPULAR, new VolleyApi.MovieResultListener() {
 
                 @Override
                 public void onMoviesResult(List<Movie> result) {
@@ -110,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         else if(getTitle().equals("Top Rated Movies")){
             getFromDB();
             volleyApi = VolleyApi.getInstance();
-            volleyApi.getAllMovies(this, apiUrlTopRated, new VolleyApi.MovieResultListener() {
+            volleyApi.getAllMovies(this, Constants.API_URL_TOP_RATED, new VolleyApi.MovieResultListener() {
 
                 @Override
                 public void onMoviesResult(List<Movie> result) {
@@ -182,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
             public MoviesViewHolder(View itemView) {
                 super(itemView);
-                movieImage = ( ImageView ) itemView.findViewById(R.id.movie_image);
+                movieImage = ( ImageView ) itemView.findViewById(R.id.movieImage);
                 movieImage.setOnClickListener(this);
             }
 
@@ -195,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.movie_image:
+                    case R.id.movieImage:
                         Intent intent = new Intent(MainActivity.this, MovieDetails.class);
                         intent.putExtra(Constants.CURRENT_MOVIE, movie);
                         startActivity(intent);
@@ -213,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.sort_by_popularity:
                 item.setChecked(true);
@@ -220,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                 getFromDB();
 
                 volleyApi = VolleyApi.getInstance();
-                volleyApi.getAllMovies(this, apiUrlPopular, new VolleyApi.MovieResultListener() {
+                volleyApi.getAllMovies(this, Constants.API_URL_POPULAR, new VolleyApi.MovieResultListener() {
 
                     @Override
                     public void onMoviesResult(List<Movie> result) {
@@ -249,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("Top Rated Movies");
                 getFromDB();
                 volleyApi = VolleyApi.getInstance();
-                volleyApi.getAllMovies(this, apiUrlTopRated, new VolleyApi.MovieResultListener() {
+                volleyApi.getAllMovies(this, Constants.API_URL_TOP_RATED, new VolleyApi.MovieResultListener() {
 
                     @Override
                     public void onMoviesResult(List<Movie> result) {
@@ -289,20 +359,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getFromDB(){
+
         arrFavoriteMovies = new ArrayList<>();
 
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM " + MovieDetails.MovieDatabaseContract.FavoriteMovie.TABLE_NAME, null);
+
+        // Retrieve Movie records
+        String URL = "content://jason.tuchler.com.popularmovies.MoviesContentProvider";
+
+        Uri movies = Uri.parse(URL);
+        Cursor c = managedQuery(movies, null, null, null, MoviesContentProvider.COLUMN_NAME_MOVIEID);
+
+
         if(c.moveToFirst()){
             do{
-                //assing values
-                String id = c.getString(0);
-                String imagePath = c.getString(1);
-                String movieId = c.getString(2);
-                String overview = c.getString(3);
-                String releaseDate = c.getString(4);
-                String title = c.getString(5);
-                String voteCount = c.getString(6);
+                // getting values
+                String id = c.getString(c.getColumnIndex(MoviesContentProvider._ID));
+                String imagePath = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_IMAGEPATH));
+                String movieId = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_MOVIEID));
+                String overview = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_OVERVIEW));
+                String releaseDate = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_RELEASEDATE));
+                String title = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_TITLE));
+                String voteCount = c.getString(c.getColumnIndex(MoviesContentProvider.COLUMN_NAME_VOTECOUNT));
 
 
                 Movie movieObject = new Movie();
@@ -316,12 +393,17 @@ public class MainActivity extends AppCompatActivity {
                 movieObject.isFavorite = "1";
 
                 arrFavoriteMovies.add(movieObject);
+
                 //Do something Here with values
 
             }while(c.moveToNext());
         }
-        c.close();
-        db.close();
+
+
+
+
+
+
     }
 
 

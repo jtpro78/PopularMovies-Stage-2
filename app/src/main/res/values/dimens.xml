@@ -1,3 +1,21 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_layout_height">100dp</dimen>
+    <dimen name="title_text_size">30sp</dimen>
+    <dimen name="poster_layout_width">0dp</dimen>
+    <dimen name="poster_layout_padding">8dp</dimen>
+    <dimen name="movie_details_text_size">17sp</dimen>
+    <dimen name="star_dimen">50dp</dimen>
+    <dimen name="star_margin">10dp</dimen>
+    <dimen name="movie_descript_text_size">12sp</dimen>
+    <dimen name="trailers_label_text_size">18sp</dimen>
+    <dimen name="list_view_layout_height">110dp</dimen>
+    <dimen name="reviews_text_size">18sp</dimen>
+    <dimen name="list_view_reviews_height">300dp</dimen>
+    <dimen name="lbl_review_margin_start">25dp</dimen>
+    <dimen name="lbl_review_margin_top">11dp</dimen>
+    <dimen name="lbl_review_text_size">17sp</dimen>
+    <dimen name="image_view_height">25dp</dimen>
+    <dimen name="image_view_margin_start">15dp</dimen>
+    <dimen name="trailer_name_text_size">18sp</dimen>
 </resources>

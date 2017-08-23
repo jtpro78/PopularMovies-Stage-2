@@ -15,9 +15,8 @@ public class WebBrowser extends AppCompatActivity {
         SharedPreferences shared = getSharedPreferences("url", MODE_PRIVATE);
         final String url = (shared.getString("url", ""));
 
-        WebView webView =(WebView) findViewById(R.id.web_view);
+        WebView webView =(WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
-
     }
 }

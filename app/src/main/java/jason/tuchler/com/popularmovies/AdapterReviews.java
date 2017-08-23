@@ -48,9 +48,9 @@ public class AdapterReviews extends BaseAdapter
             viewHolder = new AdapterReviews.ViewHolder();
 
             viewHolder.lblReview = (TextView) convertView
-                    .findViewById(R.id.lbl_review);
+                    .findViewById(R.id.lblReview);
             viewHolder.lblName = (TextView) convertView
-                    .findViewById(R.id.lbl_name);
+                    .findViewById(R.id.lblName);
 
             convertView.setTag(viewHolder);
         } else {

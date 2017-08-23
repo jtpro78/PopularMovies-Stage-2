@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            android:padding="16dp">
+            android:padding="@dimen/fab_margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,139 +30,143 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:id="@+id/title_container"
+                    android:id="@+id/titleContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_height="@dimen/title_layout_height"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     android:background="@color/colorMovieTitle"
                     android:focusableInTouchMode="true">
 
                     <TextView
-                        android:id="@+id/movie_detail_title"
+                        android:id="@+id/movieDetailTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/fab_margin"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@android:color/white"
-                        android:textSize="30sp"
+                        android:textSize="@dimen/title_text_size"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/movie_poster"
+                    android:id="@+id/moviePoster"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:layout_below="@id/title_container"
+                    android:layout_below="@id/titleContainer"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/fab_margin"
                     android:weightSum="10">
 
                     <ImageView
-                        android:id="@+id/movie_detail_poster"
-                        android:layout_width="0dp"
+                        android:id="@+id/movieDetailPoster"
+                        android:layout_width="@dimen/poster_layout_width"
                         android:layout_height="match_parent"
                         android:layout_weight="3.7"
                         android:contentDescription="@string/Movie_Poster" />
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/poster_layout_width"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="@dimen/fab_margin"
                         android:layout_weight="6"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="@dimen/poster_layout_padding">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/Release_Date"
-                            android:textSize="17sp" />
+                            android:textSize="@dimen/movie_details_text_size" />
 
                         <TextView
-                            android:id="@+id/release_date"
+                            android:id="@+id/releaseDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingBottom="20dp"
-                            android:textSize="17sp" />
+                            android:textSize="@dimen/movie_details_text_size" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/Movie_Rating"
-                            android:textSize="17sp" />
+                            android:textSize="@dimen/movie_details_text_size" />
 
                         <TextView
-                            android:id="@+id/movie_rating"
+                            android:id="@+id/movieRating"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="17sp" />
+                            android:textSize="@dimen/movie_details_text_size" />
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/img_favorite"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
+                        android:id="@+id/imgFavorite"
+                        android:layout_width="@dimen/star_dimen"
+                        android:layout_height="@dimen/star_dimen"
+                        android:layout_marginTop="@dimen/star_margin"
                         android:layout_weight="0.3"
                         android:onClick="btnFavoriteTapped"
                         app:srcCompat="@drawable/favorite_uncheck" />
                 </LinearLayout>
+                <android.support.design.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/coordinatorLayout">
 
+                </android.support.design.widget.CoordinatorLayout>
                 <TextView
-                    android:id="@+id/movie_description"
+                    android:id="@+id/movieDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/movie_descript_text_size" />
 
                 <LinearLayout
-                    android:id="@+id/list_LL"
+                    android:id="@+id/listLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_view"
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Trailers"
                         android:textColor="@android:color/holo_blue_dark"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/trailers_label_text_size"
                         android:textStyle="bold" />
 
                     <ListView
-                        android:id="@+id/list_view"
+                        android:id="@+id/listView"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="@dimen/list_view_layout_height"
                         android:nestedScrollingEnabled="true">
                     </ListView>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/list_reviews_LL"
+                    android:id="@+id/listReviewsLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_view_4"
+                        android:id="@+id/textViewReviews"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Reviews"
                         android:textColor="@android:color/holo_blue_dark"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/reviews_text_size"
                         android:textStyle="bold"/>
 
                     <ListView
-                        android:id="@+id/list_view_reviews"
+                        android:id="@+id/listViewReviews"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"
+                        android:layout_height="@dimen/list_view_reviews_height"
                         android:nestedScrollingEnabled="true">
 
                     </ListView>
-
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

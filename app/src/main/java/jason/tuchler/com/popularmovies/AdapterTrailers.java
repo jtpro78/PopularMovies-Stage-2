@@ -45,7 +45,7 @@ public class AdapterTrailers extends BaseAdapter
             viewHolder = new AdapterTrailers.ViewHolder();
 
             viewHolder.lblName = (TextView ) convertView
-                    .findViewById(R.id.lbl_trailer);
+                    .findViewById(R.id.lblTrailer);
 
             convertView.setTag(viewHolder);
         } else {
