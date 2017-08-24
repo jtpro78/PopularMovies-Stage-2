@@ -4,6 +4,7 @@
       <mapping pattern="menu" type="PLAIN_TEXT" />
       <mapping pattern=".htmlthesong.mp3" type="PLAIN_TEXT" />
       <mapping ext="mp3" type="PLAIN_TEXT" />
+      <mapping pattern="list_item_forecast_today" type="XML" />
     </extensionMap>
   </component>
 </application>
