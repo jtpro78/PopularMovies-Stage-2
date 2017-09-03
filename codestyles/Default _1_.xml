@@ -62,7 +62,6 @@
   <codeStyleSettings language="JAVA">
     <option name="SPACE_WITHIN_EMPTY_METHOD_CALL_PARENTHESES" value="true" />
     <option name="SPACE_WITHIN_CAST_PARENTHESES" value="true" />
-    <option name="SPACE_BEFORE_METHOD_CALL_PARENTHESES" value="true" />
   </codeStyleSettings>
   <codeStyleSettings language="XML">
     <option name="FORCE_REARRANGE_MODE" value="1" />
